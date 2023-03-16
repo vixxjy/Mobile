@@ -6,12 +6,18 @@ import Home from "../screens/Home";
 import NewBeneficiary from "../screens/NewBeneficiary";
 import ExistingBeneficiary from "../screens/ExistingBeneficiary";
 import Setting from "../screens/Setting";
+import ConsentForm from "../screens/ConsentForm";
 
 const HomeNavigator = () => {
   const HomeStack = createNativeStackNavigator();
 
   return (
-    <HomeStack.Navigator initialRouteName="Login">
+    <HomeStack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+      initialRouteName="Login"
+    >
       <HomeStack.Screen name="Login" component={Login} />
       <HomeStack.Screen name="Device Activation" component={DeviceActivation} />
       <HomeStack.Screen name="Home" component={Home} />
@@ -20,6 +26,7 @@ const HomeNavigator = () => {
         name="Existing Beneficiary"
         component={ExistingBeneficiary}
       ></HomeStack.Screen>
+      <HomeStack.Screen name="Consent" component={ConsentForm} />
       <HomeStack.Screen name="Settings" component={Setting} />
     </HomeStack.Navigator>
   );

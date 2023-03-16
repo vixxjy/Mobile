@@ -1,48 +1,65 @@
 import React from "react";
-import {
-  Button,
-  StyleSheet,
-  Text,
-  SafeAreaView,
-  TextInput,
-} from "react-native";
+import { View, Text } from "react-native";
+import { Button, Title, TextInput, Paragraph } from "react-native-paper";
 
 const Login = ({ navigation }) => {
   const [email, onChangeEmail] = React.useState("");
   const [password, onChangePassword] = React.useState("");
 
   return (
-    <SafeAreaView
-      style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
-    >
-      <Text>Login</Text>
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeEmail}
-        placeholder="example@email.com"
-        value={email}
-      />
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangePassword}
-        value={password}
-        placeholder="useless placeholder"
-      />
-      <Button
-        title="Sign In"
-        onPress={() => navigation.navigate("Device Activation")}
-      />
-    </SafeAreaView>
+    <View style={{ flex: 1, justifyContent: "center" }}>
+      <View style={{ width: "80%", alignSelf: "center" }}>
+        <Text
+          style={{
+            alignSelf: "center",
+            color: "green",
+            fontSize: 22,
+            fontWeight: "bold",
+            marginBottom: 50,
+          }}
+        >
+          NOMIS Child Monitor App
+        </Text>
+
+        <Title style={{ fontWeight: "bold" }}>Sign In</Title>
+        <Paragraph style={{ marginBottom: 20 }}>
+          Hi there! Nice to see you again.
+        </Paragraph>
+
+        <TextInput
+          mode="outlined"
+          label="Email"
+          placeholder="Type something"
+          onChangeText={onChangeEmail}
+          value={email}
+          outlineColor="green"
+          activeOutlineColor="green"
+        />
+
+        <TextInput
+          mode="outlined"
+          style={{ marginTop: 20 }}
+          label="Password"
+          onChangeText={onChangePassword}
+          value={password}
+          outlineColor="green"
+          activeOutlineColor="green"
+          secureTextEntry
+          right={<TextInput.Icon icon="eye" />}
+        />
+
+        <Button
+          style={{ marginTop: 20 }}
+          loading={false}
+          buttonColor="green"
+          mode="contained"
+          onPress={() => navigation.navigate("Device Activation")}
+        >
+          Login
+        </Button>
+      </View>
+    </View>
   );
 };
-
-const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-  },
-});
 
 export default Login;
