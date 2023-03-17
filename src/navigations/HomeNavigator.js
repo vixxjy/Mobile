@@ -7,6 +7,7 @@ import NewBeneficiary from "../screens/NewBeneficiary";
 import ExistingBeneficiary from "../screens/ExistingBeneficiary";
 import Setting from "../screens/Setting";
 import ConsentForm from "../screens/ConsentForm";
+import VCEnrolmentForm from "../screens/VCEnrolmentForm";
 
 const HomeNavigator = () => {
   const HomeStack = createNativeStackNavigator();
@@ -27,6 +28,7 @@ const HomeNavigator = () => {
         component={ExistingBeneficiary}
       ></HomeStack.Screen>
       <HomeStack.Screen name="Consent" component={ConsentForm} />
+      <HomeStack.Screen name="VCEnrolment" component={VCEnrolmentForm} />
       <HomeStack.Screen name="Settings" component={Setting} />
     </HomeStack.Navigator>
   );

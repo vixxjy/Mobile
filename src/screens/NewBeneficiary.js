@@ -62,7 +62,7 @@ const NewBeneficiary = ({ navigation }) => {
           <Card.Title
             title="VC Enrollment"
             left={LeftContent}
-            right={() => RightContent("Consent")}
+            right={() => RightContent("VCEnrolment")}
             style={{ backgroundColor: "#d6edd5", marginTop: 5 }}
           />
           <Card.Title
@@ -80,7 +80,7 @@ const NewBeneficiary = ({ navigation }) => {
           <Card.Title
             title="VC Enrollment"
             left={LeftContent}
-            right={() => RightContent("Consent")}
+            right={() => RightContent("VCEnrolment")}
             style={{ backgroundColor: "#d6edd5", marginTop: 5 }}
           />
           <Card.Title
