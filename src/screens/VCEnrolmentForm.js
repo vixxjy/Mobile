@@ -5,19 +5,19 @@ import {
   SafeAreaView,
   ScrollView,
   TextInput,
-  TouchableOpacity,
   StyleSheet,
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import RadioForm from "react-native-simple-radio-button";
-import { Appbar, Checkbox, Button } from "react-native-paper";
+import { Appbar, Button } from "react-native-paper";
 import { Picker } from "@react-native-picker/picker";
+import Checkbox from "expo-checkbox";
 import { DatePickerInput } from "react-native-paper-dates";
 
 const VCEnrolmentForm = ({ navigation }) => {
   const [formData, setData] = useState({});
   const [errors, setErrors] = useState({});
-  const [checked, setChecked] = React.useState(false);
+  const [isChecked, setChecked] = useState(false);
   const [selected, setSelected] = useState();
   const [inputDate, setInputDate] = React.useState(undefined);
 
@@ -216,7 +216,14 @@ const VCEnrolmentForm = ({ navigation }) => {
             borderRadius: 4,
           }}
         >
-          <TextInput
+          <DatePickerInput
+            locale="en"
+            label="Date"
+            value={inputDate}
+            onChange={(d) => setInputDate(d)}
+            inputMode="start"
+          />
+          {/* <TextInput
             placeholder="Date*"
             style={{ flex: 1, paddingVertical: 0 }}
             onChangeText={(value) => handleFormData("date", value)}
@@ -226,7 +233,7 @@ const VCEnrolmentForm = ({ navigation }) => {
             size={20}
             color="#666"
             style={{ marginRight: 5 }}
-          />
+          /> */}
         </View>
         <View
           style={{
@@ -297,7 +304,7 @@ const VCEnrolmentForm = ({ navigation }) => {
         </View>
         <Text
           style={{
-            fontFamily: "Roboto-Medium",
+            // fontFamily: "Roboto-Medium",
             fontSize: 18,
             fontWeight: 700,
             color: "#333",
@@ -310,10 +317,9 @@ const VCEnrolmentForm = ({ navigation }) => {
         <View style={styles.container}>
           <View style={styles.checkboxContainer}>
             <Checkbox
-              status={checked ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked(!checked);
-              }}
+              style={styles.checkbox}
+              value={isChecked}
+              onValueChange={setChecked}
             />
             <Text>1. Child living with HIV (CLHIV)</Text>
           </View>
@@ -321,10 +327,9 @@ const VCEnrolmentForm = ({ navigation }) => {
         <View style={styles.container}>
           <View style={styles.checkboxContainer}>
             <Checkbox
-              status={checked ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked(!checked);
-              }}
+              style={styles.checkbox}
+              value={isChecked}
+              onValueChange={setChecked}
             />
             <Text style={styles.label}>2. HIV Exposed Infants (HEI)</Text>
           </View>
@@ -332,10 +337,9 @@ const VCEnrolmentForm = ({ navigation }) => {
         <View style={styles.container}>
           <View style={styles.checkboxContainer}>
             <Checkbox
-              status={checked ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked(!checked);
-              }}
+              style={styles.checkbox}
+              value={isChecked}
+              onValueChange={setChecked}
             />
             <Text style={styles.label}>
               3. Child living with an HIV Positive Adult
@@ -345,10 +349,9 @@ const VCEnrolmentForm = ({ navigation }) => {
         <View style={styles.container}>
           <View style={styles.checkboxContainer}>
             <Checkbox
-              status={checked ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked(!checked);
-              }}
+              style={styles.checkbox}
+              value={isChecked}
+              onValueChange={setChecked}
             />
             <Text style={styles.label}>
               4. Child at risk or have experienced sexual violence or any other
@@ -373,43 +376,39 @@ const VCEnrolmentForm = ({ navigation }) => {
         <View style={styles.container}>
           <View style={styles.checkboxContainer}>
             <Checkbox
-              status={checked ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked(!checked);
-              }}
+              style={styles.checkbox}
+              value={isChecked}
+              onValueChange={setChecked}
             />
-            <Text>Physical</Text>
+            <Text> Physical</Text>
           </View>
         </View>
         <View style={styles.container}>
           <View style={styles.checkboxContainer}>
             <Checkbox
-              status={checked ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked(!checked);
-              }}
+              style={styles.checkbox}
+              value={isChecked}
+              onValueChange={setChecked}
             />
-            <Text>Sexual</Text>
+            <Text> Sexual</Text>
           </View>
         </View>
         <View style={styles.container}>
           <View style={styles.checkboxContainer}>
             <Checkbox
-              status={checked ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked(!checked);
-              }}
+              style={styles.checkbox}
+              value={isChecked}
+              onValueChange={setChecked}
             />
-            <Text>Emotional</Text>
+            <Text> Emotional</Text>
           </View>
         </View>
         <View style={styles.container}>
           <View style={styles.checkboxContainer}>
             <Checkbox
-              status={checked ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked(!checked);
-              }}
+              style={styles.checkbox}
+              value={isChecked}
+              onValueChange={setChecked}
             />
             <Text style={styles.label}>5. Teenage mother</Text>
           </View>
@@ -417,10 +416,9 @@ const VCEnrolmentForm = ({ navigation }) => {
         <View style={styles.container}>
           <View style={styles.checkboxContainer}>
             <Checkbox
-              status={checked ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked(!checked);
-              }}
+              style={styles.checkbox}
+              value={isChecked}
+              onValueChange={setChecked}
             />
             <Text style={styles.label}>
               6. Children in need of alternative family care
@@ -430,10 +428,9 @@ const VCEnrolmentForm = ({ navigation }) => {
         <View style={styles.container}>
           <View style={styles.checkboxContainer}>
             <Checkbox
-              status={checked ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked(!checked);
-              }}
+              style={styles.checkbox}
+              value={isChecked}
+              onValueChange={setChecked}
             />
             <Text style={styles.label}>
               7. Children living on the street (exploited almajiri, nomadic,
@@ -444,10 +441,9 @@ const VCEnrolmentForm = ({ navigation }) => {
         <View style={styles.container}>
           <View style={styles.checkboxContainer}>
             <Checkbox
-              status={checked ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked(!checked);
-              }}
+              style={styles.checkbox}
+              value={isChecked}
+              onValueChange={setChecked}
             />
             <Text style={styles.label}>8. Children in conflict with law</Text>
           </View>
@@ -455,10 +451,9 @@ const VCEnrolmentForm = ({ navigation }) => {
         <View style={styles.container}>
           <View style={styles.checkboxContainer}>
             <Checkbox
-              status={checked ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked(!checked);
-              }}
+              style={styles.checkbox}
+              value={isChecked}
+              onValueChange={setChecked}
             />
             <Text style={styles.label}>9. Children of KP;</Text>
           </View>
@@ -480,10 +475,9 @@ const VCEnrolmentForm = ({ navigation }) => {
         <View style={styles.container}>
           <View style={styles.checkboxContainer}>
             <Checkbox
-              status={checked ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked(!checked);
-              }}
+              style={styles.checkbox}
+              value={isChecked}
+              onValueChange={setChecked}
             />
             <Text style={styles.label}>FSW</Text>
           </View>
@@ -491,10 +485,9 @@ const VCEnrolmentForm = ({ navigation }) => {
         <View style={styles.container}>
           <View style={styles.checkboxContainer}>
             <Checkbox
-              status={checked ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked(!checked);
-              }}
+              style={styles.checkbox}
+              value={isChecked}
+              onValueChange={setChecked}
             />
             <Text style={styles.label}>MSM</Text>
           </View>
@@ -502,10 +495,9 @@ const VCEnrolmentForm = ({ navigation }) => {
         <View style={styles.container}>
           <View style={styles.checkboxContainer}>
             <Checkbox
-              status={checked ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked(!checked);
-              }}
+              style={styles.checkbox}
+              value={isChecked}
+              onValueChange={setChecked}
             />
             <Text style={styles.label}>TG</Text>
           </View>
@@ -513,10 +505,9 @@ const VCEnrolmentForm = ({ navigation }) => {
         <View style={styles.container}>
           <View style={styles.checkboxContainer}>
             <Checkbox
-              status={checked ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked(!checked);
-              }}
+              style={styles.checkbox}
+              value={isChecked}
+              onValueChange={setChecked}
             />
             <Text style={styles.label}>PWID</Text>
           </View>
@@ -524,10 +515,9 @@ const VCEnrolmentForm = ({ navigation }) => {
         <View style={styles.container}>
           <View style={styles.checkboxContainer}>
             <Checkbox
-              status={checked ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked(!checked);
-              }}
+              style={styles.checkbox}
+              value={isChecked}
+              onValueChange={setChecked}
             />
             <Text style={styles.label}>People in Correctional Centre</Text>
           </View>
@@ -535,10 +525,9 @@ const VCEnrolmentForm = ({ navigation }) => {
         <View style={styles.container}>
           <View style={styles.checkboxContainer}>
             <Checkbox
-              status={checked ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked(!checked);
-              }}
+              style={styles.checkbox}
+              value={isChecked}
+              onValueChange={setChecked}
             />
             <Text style={styles.label}>10. Child orphaned by AIDS</Text>
           </View>
@@ -546,10 +535,9 @@ const VCEnrolmentForm = ({ navigation }) => {
         <View style={styles.container}>
           <View style={styles.checkboxContainer}>
             <Checkbox
-              status={checked ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked(!checked);
-              }}
+              style={styles.checkbox}
+              value={isChecked}
+              onValueChange={setChecked}
             />
             <Text style={styles.label}>
               11. Child living in a child Headed Household
@@ -559,10 +547,9 @@ const VCEnrolmentForm = ({ navigation }) => {
         <View style={styles.container}>
           <View style={styles.checkboxContainer}>
             <Checkbox
-              status={checked ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked(!checked);
-              }}
+              style={styles.checkbox}
+              value={isChecked}
+              onValueChange={setChecked}
             />
             <Text style={styles.label}>
               12. Child especially adolescent females at risk of transactional
@@ -573,10 +560,9 @@ const VCEnrolmentForm = ({ navigation }) => {
         <View style={styles.container}>
           <View style={styles.checkboxContainer}>
             <Checkbox
-              status={checked ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked(!checked);
-              }}
+              style={styles.checkbox}
+              value={isChecked}
+              onValueChange={setChecked}
             />
             <Text style={styles.label}>13. Socially excluded children</Text>
           </View>
@@ -584,10 +570,9 @@ const VCEnrolmentForm = ({ navigation }) => {
         <View style={styles.container}>
           <View style={styles.checkboxContainer}>
             <Checkbox
-              status={checked ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked(!checked);
-              }}
+              style={styles.checkbox}
+              value={isChecked}
+              onValueChange={setChecked}
             />
             <Text style={styles.label}>14. Children with disabilities</Text>
           </View>
@@ -595,10 +580,9 @@ const VCEnrolmentForm = ({ navigation }) => {
         <View style={styles.container}>
           <View style={styles.checkboxContainer}>
             <Checkbox
-              status={checked ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked(!checked);
-              }}
+              style={styles.checkbox}
+              value={isChecked}
+              onValueChange={setChecked}
             />
             <Text style={styles.label}>
               15. Children trafficked/in exploitative labour
@@ -608,10 +592,9 @@ const VCEnrolmentForm = ({ navigation }) => {
         <View style={styles.container}>
           <View style={styles.checkboxContainer}>
             <Checkbox
-              status={checked ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked(!checked);
-              }}
+              style={styles.checkbox}
+              value={isChecked}
+              onValueChange={setChecked}
             />
             <Text style={styles.label}>
               16. Children affected by armed conflict
@@ -621,10 +604,9 @@ const VCEnrolmentForm = ({ navigation }) => {
         <View style={styles.container}>
           <View style={styles.checkboxContainer}>
             <Checkbox
-              status={checked ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked(!checked);
-              }}
+              style={styles.checkbox}
+              value={isChecked}
+              onValueChange={setChecked}
             />
             <Text style={styles.label}>17. Siblings of CLHIV</Text>
           </View>
@@ -691,7 +673,14 @@ const VCEnrolmentForm = ({ navigation }) => {
             borderRadius: 4,
           }}
         >
-          <TextInput
+          <DatePickerInput
+            locale="en"
+            label="Date of HIV Test"
+            value={inputDate}
+            onChange={(d) => setInputDate(d)}
+            inputMode="start"
+          />
+          {/* <TextInput
             placeholder="Date of HIV Test"
             style={{ flex: 1, paddingVertical: 0 }}
             onChangeText={(value) => handleFormData("dateOfHivTest", value)}
@@ -701,7 +690,7 @@ const VCEnrolmentForm = ({ navigation }) => {
             size={20}
             color="#666"
             style={{ marginRight: 5 }}
-          />
+          /> */}
         </View>
         <View
           style={{
@@ -757,7 +746,14 @@ const VCEnrolmentForm = ({ navigation }) => {
             borderRadius: 4,
           }}
         >
-          <TextInput
+          <DatePickerInput
+            locale="en"
+            label="Date of HIV Test"
+            value={inputDate}
+            onChange={(d) => setInputDate(d)}
+            inputMode="start"
+          />
+          {/* <TextInput
             placeholder="Date of HIV Test"
             style={{ flex: 1, paddingVertical: 0 }}
             onChangeText={(value) => handleFormData("dateOfHivTest", value)}
@@ -767,7 +763,7 @@ const VCEnrolmentForm = ({ navigation }) => {
             size={20}
             color="#666"
             style={{ marginRight: 5 }}
-          />
+          /> */}
         </View>
         <View
           style={{
@@ -778,7 +774,7 @@ const VCEnrolmentForm = ({ navigation }) => {
         >
           <Text
             style={{
-              fontFamily: "Roboto-Medium",
+              // fontFamily: "Roboto-Medium",
               fontSize: 18,
               fontWeight: 500,
               color: "#333",
@@ -812,7 +808,14 @@ const VCEnrolmentForm = ({ navigation }) => {
             borderRadius: 4,
           }}
         >
-          <TextInput
+          <DatePickerInput
+            locale="en"
+            label="Date of ART Enrollment"
+            value={inputDate}
+            onChange={(d) => setInputDate(d)}
+            inputMode="start"
+          />
+          {/* <TextInput
             placeholder="Date of ART Enrollment"
             style={{ flex: 1, paddingVertical: 0 }}
             onChangeText={(value) =>
@@ -824,7 +827,7 @@ const VCEnrolmentForm = ({ navigation }) => {
             size={20}
             color="#666"
             style={{ marginRight: 5 }}
-          />
+          /> */}
         </View>
         <View
           style={{
@@ -1105,27 +1108,6 @@ const VCEnrolmentForm = ({ navigation }) => {
         >
           Submit
         </Button>
-        {/* <TouchableOpacity
-          onPress={onSubmit}
-          style={{
-            // backgroundColor: GLOBALS.PRIMARY_COLOR,
-            padding: 15,
-            borderRadius: 10,
-            marginTop: 30,
-            marginBottom: 30,
-          }}
-        >
-          <Text
-            style={{
-              textAlign: "center",
-              fontSize: 16,
-              fontWeight: 700,
-              color: "#fff",
-            }}
-          >
-            Save
-          </Text>
-        </TouchableOpacity> */}
       </ScrollView>
     </SafeAreaView>
   );
